@@ -6,6 +6,7 @@ public abstract class Spectacle {
 	
 	private String titre;
 	private List<String> interpretes;
+
 	public Spectacle(String titre, List<String> interpretes) {
 		this.titre = titre;
 		this.interpretes = interpretes;
