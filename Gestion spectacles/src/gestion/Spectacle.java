@@ -6,4 +6,5 @@ public abstract class Spectacle {
 	
 	private String titre;
 	private List<String> interpretes;
+
 }
