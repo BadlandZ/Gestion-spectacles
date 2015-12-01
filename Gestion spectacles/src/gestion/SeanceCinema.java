@@ -1,29 +1,35 @@
 package gestion;
 
-public class SeanceCinema extends Seance{
-	
+public class SeanceCinema extends Seance {
+
 	private Salle salle;
 	private int nbPlacesVenduesTR;
-	public SeanceCinema(int jour, Heure horaire,  Salle salle) {
+
+	public SeanceCinema(int jour, Heure horaire, Salle salle) {
 		super(jour, horaire);
 	}
-	
-	
+
+	public void vendrePlacesTR(int nbre) {
+		if (this.nbPlacesVenduesTR == this.salle.getCapacite())
+			throw new IllegalArgumentException("Capacite atteinte.");
+		this.nbPlacesVenduesTR += nbre;
+	}
+
 	public double tauxRemplissage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((this.nbPlacesVenduesTR * salle.getCapacite()) / 100);
 	}
 
-	
 	public int nbPlacesDispo() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.salle.getCapacite() - this.nbPlacesVenduesTR;
 	}
 
-	
 	public int totalVendu() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.nbPlacesVenduesTR;
+	}
+
+	public String toString() {
+		return super.toString() + nbPlacesVenduesTR
+				+ " places vendues à TR. Salle: " + salle.toString();
 	}
 
 }

@@ -1,10 +1,11 @@
 package gestion;
 
 public abstract class Seance {
-	
+
 	private int jour;
 	private Heure horaire;
 	private int nbPlacesVenduesTN;
+
 	public Seance(int jour, Heure horaire) {
 		this.jour = jour;
 		this.horaire = horaire;
@@ -12,20 +13,18 @@ public abstract class Seance {
 	}
 
 	public abstract int nbPlacesDispo();
+
 	public abstract int totalVendu();
+
 	public abstract double tauxRemplissage();
-	public void vendrePlacesTN(int nbre) { this.nbPlacesVenduesTN += nbre;	}
-	
-	public int getJour() {
-		return jour;
+
+	public void vendrePlacesTN(int nbre) {
+		this.nbPlacesVenduesTN += nbre;
 	}
 
-	public Heure getHoraire() {
-		return horaire;
-	}
-
-	public int getNbPlacesVenduesTN() {
-		return nbPlacesVenduesTN;
+	public String toString() {
+		return "Le: " + jour + ". A: " + horaire.toString() + ". "
+				+ nbPlacesVenduesTN + " places vendues à TN. ";
 	}
 
 }
