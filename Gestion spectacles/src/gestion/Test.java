@@ -11,8 +11,8 @@ public class Test {
 		
 		ProgrammationFilm p = new ProgrammationFilm();
 		SeanceCinema sC = new SeanceCinema(3, new Heure(12, 15), s);
-		SeanceCinema sD = new SeanceCinema(1, new Heure(14, 15), b);
-		SeanceCinema sR = new SeanceCinema(1, new Heure(13, 15), b);
+		SeanceCinema sD = new SeanceCinema(1, new Heure(14, 15), s);
+		SeanceCinema sR = new SeanceCinema(1, new Heure(14, 15), b);
 		p.ajouterSeance(sC);
 		p.ajouterSeance(sD);
 		p.ajouterSeance(sR);

@@ -1,5 +1,6 @@
 package gestion;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -17,6 +18,28 @@ public class ProgrammationFilm {
 	
 	public void supprimerSeance(SeanceCinema sC) {
 		listeSeances.remove(sC);
+	}
+	
+	public Iterator<SeanceCinema> getIteraror() { return listeSeances.iterator(); }
+	
+	public SeanceCinema rechercherSeance(int jour, Heure h) {
+		Iterator<SeanceCinema> it = listeSeances.iterator();
+		while(it.hasNext()) {
+			if((it.next().getJour() == jour) && (it.next().getHoraire().equals(h))) {
+				return it.next();
+			}
+		}
+		return null;
+	}
+	
+	// A terminer
+	public double tauxRemplissage(int jour, Heure h) {
+		return 0;
+	}
+	
+	// A terminer
+	public double chiffreAffaire() {
+		return 0;
 	}
 	
 	public String toString() {
