@@ -32,6 +32,10 @@ public class Heure implements Comparable<Heure>{
 		return 1;
 	}
 	
+	public boolean equals(Heure h) {
+		return ((this.heures == h.heures) && (this.minutes == h.minutes));
+	}
+	
 	public String toString() {
 		return heures+"h"+minutes;
 	}

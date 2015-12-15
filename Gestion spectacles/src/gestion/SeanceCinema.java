@@ -7,6 +7,8 @@ public class SeanceCinema extends Seance {
 
 	public SeanceCinema(int jour, Heure horaire, Salle salle) {
 		super(jour, horaire);
+		this.salle = salle;
+		this.nbPlacesVenduesTR = 0;
 	}
 
 	public void vendrePlacesTR(int nbre) {
@@ -29,7 +31,7 @@ public class SeanceCinema extends Seance {
 
 	public String toString() {
 		return super.toString() + nbPlacesVenduesTR
-				+ " places vendues à TR. Salle: " + salle.toString();
+				+ " places vendues à TR. " + salle.toString();
 	}
 
 }
