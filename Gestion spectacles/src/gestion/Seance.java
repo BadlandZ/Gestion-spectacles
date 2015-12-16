@@ -25,10 +25,7 @@ public abstract class Seance implements Comparable<Seance> {
 		this.nbPlacesVenduesTN += nbre;
 	}
 	
-	public String toString() {
-		return "Le: " + jour + ". A: " + horaire.toString() + ". "
-				+ nbPlacesVenduesTN + " places vendues à TN. ";
-	}
+	
 	
 	public int compareTo(Seance s) {
 		if(this.getJour() > s.getJour()) {
@@ -52,4 +49,8 @@ public abstract class Seance implements Comparable<Seance> {
 		return ((this.jour == s.jour) && (this.horaire.equals(s.horaire)));
 	}
 
+	public String toString() {
+		return "Le: " + jour + ". A: " + horaire.toString() + ". "
+				+ nbPlacesVenduesTN + " places vendues à TN. ";
+	}
 }

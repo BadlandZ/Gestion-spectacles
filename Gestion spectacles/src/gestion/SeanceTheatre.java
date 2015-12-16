@@ -10,6 +10,8 @@ public class SeanceTheatre extends Seance {
 		this.salleTheatre = salleTheatre;
 		this.nbFauteuilsVendus = 0;
 	}
+	
+	public SalleTheatre getSalle() { return this.salleTheatre; }
 
 	public int nbFauteuilsDispo() {
 		return this.salleTheatre.getNbFauteuils() - this.nbFauteuilsVendus;
@@ -22,7 +24,7 @@ public class SeanceTheatre extends Seance {
 	}
 
 	public int nbPlacesDispo() {
-		return salleTheatre.getCapacite() - nbFauteuilsVendus;
+		return salleTheatre.getCapacite() - this.nbFauteuilsVendus;
 	}
 
 	public int totalVendu() {
@@ -32,5 +34,6 @@ public class SeanceTheatre extends Seance {
 	public double tauxRemplissage() {
 		return ((nbFauteuilsVendus * salleTheatre.getCapacite()) / 100);
 	}
+	
 
 }

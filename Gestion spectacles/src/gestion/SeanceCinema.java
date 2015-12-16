@@ -28,6 +28,8 @@ public class SeanceCinema extends Seance {
 	public int totalVendu() {
 		return this.nbPlacesVenduesTR;
 	}
+	
+	public Salle getSalle() { return this.salle; }
 
 	public String toString() {
 		return super.toString() + nbPlacesVenduesTR

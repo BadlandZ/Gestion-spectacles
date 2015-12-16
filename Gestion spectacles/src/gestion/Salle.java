@@ -21,6 +21,10 @@ public class Salle {
 	public int getCapacite() {
 		return this.capacite;
 	}
+	
+	public double getTarif() {
+		return this.tarif;
+	}
 
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
