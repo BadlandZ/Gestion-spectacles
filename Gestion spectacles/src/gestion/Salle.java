@@ -29,6 +29,10 @@ public class Salle {
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
+	
+	public boolean equals(Salle s) {
+		return this.nomSalle.equals(s.nomSalle);
+	}
 
 	public String toString() {
 		return "Salle: " + nomSalle + ". Capacite: " + capacite

@@ -30,10 +30,13 @@ public class SeanceCinema extends Seance {
 	}
 	
 	public Salle getSalle() { return this.salle; }
+	
+	public boolean equals(SeanceCinema sC) {
+		return (this.equals(sC)) && (this.salle.equals(sC.salle));
+	}
 
 	public String toString() {
-		return super.toString() + nbPlacesVenduesTR
-				+ " places vendues à TR. " + salle.toString();
+		return super.toString() + nbPlacesVenduesTR + " places vendues à TR. " + salle.toString();
 	}
 
 }

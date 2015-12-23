@@ -56,4 +56,9 @@ public abstract class Seance implements Comparable<Seance> {
 		return "Le: " + jour + ". A: " + horaire.toString() + ". "
 				+ nbPlacesVenduesTN + " places vendues à TN. ";
 	}
+
+	public Object getSalle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
