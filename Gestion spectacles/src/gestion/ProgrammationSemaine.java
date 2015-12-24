@@ -22,6 +22,10 @@ public class ProgrammationSemaine {
 	public int getSemaine() {
 		return this.semaine;
 	}
+	
+	public void setSemaine(int semaine) {
+		this.semaine = semaine;
+	}
 
 	public void ajouterFilm(Film f) {
 		ProgrammationFilm pF = new ProgrammationFilm();

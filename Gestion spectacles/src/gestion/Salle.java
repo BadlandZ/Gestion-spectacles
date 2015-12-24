@@ -13,6 +13,10 @@ public class Salle {
 		this.tarif = tarif;
 		this.nbPlacesStandard = nbPlacesStandard;
 	}
+	
+	public String getNomSalle() {
+		return this.nomSalle;
+	}
 
 	public int getNbPlacesStandard() {
 		return this.nbPlacesStandard;
