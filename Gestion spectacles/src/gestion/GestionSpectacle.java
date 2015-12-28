@@ -8,8 +8,8 @@ public class GestionSpectacle {
 	static Scanner sc1 = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		int cptSalles = 0;
-		int cptSallesTheatre = 0;
+		int cptSalles = 1;
+		int cptSallesTheatre = 1;
 
 		EnsembleSalles eS = new EnsembleSalles();
 		EnsembleSallesTheatre esT = new EnsembleSallesTheatre();
@@ -20,8 +20,8 @@ public class GestionSpectacle {
 		int nbSalles = sc.nextInt();
 		System.out.println();
 
-		while (cptSalles != nbSalles) {
-			System.out.println("--- Creation de la salle " + cptSalles +1 + " ---");
+		while (cptSalles != (nbSalles+1)) {
+			System.out.println("--- Creation de la salle " + cptSalles + " ---");
 			System.out.print("Saisir un nom de salle: ");
 			String nomSalle = sc1.nextLine();
 			
@@ -33,8 +33,9 @@ public class GestionSpectacle {
 				if (sc.hasNextInt()) {
 					int nbPlacesSalle = sc.nextInt();
 					System.out.println();
-					eS.ajouterSalle(new Salle(nomSalle, tarifSalle, nbPlacesSalle));
-					cptSalles++;
+					if(eS.ajouterSalle(new Salle(nomSalle, tarifSalle, nbPlacesSalle))) {
+						cptSalles++;
+					} else System.out.println("La salle "+nomSalle+" existe deja. Merci de saisir d'autres caracteristiques.");
 				} else {
 					System.out.println("Saisir un nombre correct.");
 					sc.next();
@@ -51,8 +52,8 @@ public class GestionSpectacle {
 		int nbSallesTheatre = sc.nextInt();
 		System.out.println();
 
-		while (cptSallesTheatre != nbSallesTheatre) {
-			System.out.println("--- Creation de la salle de theatre " + cptSallesTheatre +1 + " ---");
+		while (cptSallesTheatre != (nbSallesTheatre+1)) {
+			System.out.println("--- Creation de la salle de theatre " + cptSallesTheatre + " ---");
 			System.out.print("Saisir un nom de salle: ");
 			String nomSalleTheatre = sc1.nextLine();
 			
@@ -71,9 +72,7 @@ public class GestionSpectacle {
 					if (sc.hasNextInt()) {
 						int nbPrixFauteuils = sc.nextInt();
 						System.out.println();
-						esT.ajouterSalle(new SalleTheatre(nomSalleTheatre,
-								tarifSalleTheatre, nbPlacesSalleTheatre,
-								nbFauteuils, nbPrixFauteuils));
+						esT.ajouterSalle(new SalleTheatre(nomSalleTheatre, tarifSalleTheatre, nbPlacesSalleTheatre, nbFauteuils, nbPrixFauteuils));
 						cptSallesTheatre++;
 					} else {
 						System.out.println("Saisir un nombre correct.");
@@ -89,5 +88,8 @@ public class GestionSpectacle {
 			}
 		}
 		System.out.println("La création des salles et salles de theatre est maintenant terminee.");
+		System.out.println("Recapitulatif.");
+		System.out.println(eS.toString());
+		System.out.println(esT.toString());
 	}
 }

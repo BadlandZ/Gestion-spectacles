@@ -1,5 +1,7 @@
 package gestion;
 
+import java.util.Objects;
+
 public class Salle {
 
 	private String nomSalle;
@@ -35,12 +37,15 @@ public class Salle {
 	}
 	
 	public boolean equals(Salle s) {
-		return this.nomSalle.equals(s.nomSalle);
+		return (this.nomSalle.equalsIgnoreCase(s.nomSalle) && (this.capacite == s.capacite) && (this.tarif == s.tarif) && (this.nbPlacesStandard == s.nbPlacesStandard));
+	}
+	
+	public int hashCode() {
+		return Objects.hash(nomSalle, capacite, tarif, nbPlacesStandard);
 	}
 
 	public String toString() {
-		return "Salle: " + nomSalle + ". Capacite: " + capacite
-				+ ". Tarif d'une place au balcon (place standard): " + tarif+ "€. ";
+		return "Salle: " + nomSalle + ". Capacite: " + capacite + ". Tarif d'une place au balcon (place standard): " + tarif+ "€. ";
 	}
 
 }

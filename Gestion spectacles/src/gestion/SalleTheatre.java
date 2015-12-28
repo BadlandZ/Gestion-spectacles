@@ -11,14 +11,18 @@ public class SalleTheatre extends Salle {
 		this.prixFauteuils = prixFauteuils;
 		int capacite = this.getNbPlacesStandard() + nbFauteuils;
 		this.setCapacite(capacite);
-
 	}
 	
-	public int getNbFauteuils() { return this.nbFauteuils; }
+	public int getNbFauteuils() { 
+		return this.nbFauteuils; 
+	}
+	
+	public boolean equals(SalleTheatre sT) {
+		return (this.equals(sT) && (this.nbFauteuils == sT.nbFauteuils) && (this.prixFauteuils == sT.prixFauteuils));
+	}
 
 	public String toString() {
-		return super.toString() + "Nombre de fauteuils: " + nbFauteuils
-				+ ". Prix du fauteuil: " + prixFauteuils + "€. ";
+		return super.toString() + "Nombre de fauteuils: " + nbFauteuils + ". Prix du fauteuil: " + prixFauteuils + "€. ";
 	}
 
 }

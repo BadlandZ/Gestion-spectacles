@@ -1,34 +1,48 @@
 package gestion;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Iterator;
+//import java.util.Objects;
+import java.util.Set;
 
 public class EnsembleSalles {
 	
-	private List<Salle> parc;
+	private Map<String, Salle> parc;
 	
 	public EnsembleSalles() {
-		this.parc = new ArrayList<Salle>();
+		this.parc = new HashMap<String, Salle>();
 	}
 	
-	public Iterator<Salle> salles() {
-		return this.parc.iterator();
+	public Iterator<String> salles() {
+		Set<String> salles = this.parc.keySet();
+		return salles.iterator();
 	}
 	
 	public boolean ajouterSalle(Salle s) {
-		return this.parc.add(s);
+		if(!parc.containsKey(s.getNomSalle())) {
+			this.parc.put(s.getNomSalle(), s);
+			return true;
+		}
+		return false;
 	}
 	
 	public Salle trouverSalle(String nom) {
-		Iterator<Salle> it = salles();
-		while(it.hasNext()) {
-			Salle suivant = it.next();
-			if(suivant.getNomSalle().equalsIgnoreCase(nom)) {
-				return suivant;
-			}
-		}
-		System.out.println("La salle n'existe pas.");
-		return null;
+		return this.parc.get(nom);
 	}
+	
+	public String toString() {
+		String s = "---- Ensemble des salles ----";
+		Set<Map.Entry<String, Salle>> lesEntrees= parc.entrySet();
+        Iterator<Map.Entry<String, Salle>> it = lesEntrees.iterator();
+        while (it.hasNext()){
+            Map.Entry<String, Salle> uneEntree = it.next();
+            s += "\n" + uneEntree.getValue().toString()+ "\n";
+            //Personne p = uneEntree.getKey();
+            //IListeNumTel liste =  uneEntree.getValue();
+            //s = s + p + " " + liste + "\n";
+        }
+        //return annuaire.toString();
+        return s;
+    }	
 }

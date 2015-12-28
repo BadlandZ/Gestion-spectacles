@@ -17,7 +17,9 @@ public class EnsembleSallesTheatre {
 	}
 	
 	public boolean ajouterSalle(SalleTheatre sT) {
-		return this.parc.add(sT);
+		if(!parc.contains(sT))
+			return this.parc.add(sT);
+		return false;
 	}
 	
 	public SalleTheatre trouverSalleTheatre(String nom) {
@@ -30,6 +32,15 @@ public class EnsembleSallesTheatre {
 		}
 		System.out.println("La salle n'existe pas.");
 		return null;
+	}
+	
+	public String toString() {
+		String str = "---- Ensemble des salles de theatre ----";
+		Iterator<SalleTheatre> it = parc.iterator();
+		while(it.hasNext()) {
+			str += "\n" + it.next().toString();
+		}
+		return str;
 	}
 
 }
