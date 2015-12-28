@@ -110,9 +110,9 @@ public class ProgrammationSemaine {
 		return this.listeProgTheatre.get(pT).ajouterSeance(sT);
 	}
 	
-	public Set<SeanceTheatre> consulterSeanceTheatre(SeanceTheatre sT) {
+	public Set<SeanceTheatre> consulterSeanceTheatre(PieceTheatre pT) {
 		Set<SeanceTheatre> lesSeances = new HashSet<SeanceTheatre>();
-		Iterator<SeanceTheatre> itSeanceTheatre = this.listeProgTheatre.get(sT).getIterator();
+		Iterator<SeanceTheatre> itSeanceTheatre = this.listeProgTheatre.get(pT).getIterator();
 		while (itSeanceTheatre.hasNext()) {
 			SeanceTheatre suivant = itSeanceTheatre.next();
 			lesSeances.add(suivant);
