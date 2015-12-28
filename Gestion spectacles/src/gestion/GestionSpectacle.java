@@ -10,7 +10,7 @@ public class GestionSpectacle {
 	public static void main(String[] args) {
 		int cptSalles = 1;
 		int cptSallesTheatre = 1;
-
+		//test
 		EnsembleSalles eS = new EnsembleSalles();
 		EnsembleSallesTheatre esT = new EnsembleSallesTheatre();
 
