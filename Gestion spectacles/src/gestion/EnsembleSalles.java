@@ -3,7 +3,6 @@ package gestion;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
-//import java.util.Objects;
 import java.util.Set;
 
 public class EnsembleSalles {
@@ -37,12 +36,8 @@ public class EnsembleSalles {
         Iterator<Map.Entry<String, Salle>> it = lesEntrees.iterator();
         while (it.hasNext()){
             Map.Entry<String, Salle> uneEntree = it.next();
-            s += "\n" + uneEntree.getValue().toString()+ "\n";
-            //Personne p = uneEntree.getKey();
-            //IListeNumTel liste =  uneEntree.getValue();
-            //s = s + p + " " + liste + "\n";
-        }
-        //return annuaire.toString();
+            s += "\n" + uneEntree.getValue().toString();
+        }        
         return s;
     }	
 }

@@ -33,9 +33,9 @@ public class GestionSpectacle {
 				if (sc.hasNextInt()) {
 					int nbPlacesSalle = sc.nextInt();
 					System.out.println();
-					if(eS.ajouterSalle(new Salle(nomSalle, tarifSalle, nbPlacesSalle))) {
+					if(eS.ajouterSalle(new Salle(nomSalle, tarifSalle, nbPlacesSalle)))
 						cptSalles++;
-					} else System.out.println("La salle "+nomSalle+" existe deja. Merci de saisir d'autres caracteristiques.");
+					else System.out.println("La salle "+nomSalle+" existe deja. Merci de saisir d'autres caracteristiques.");
 				} else {
 					System.out.println("Saisir un nombre correct.");
 					sc.next();
@@ -72,8 +72,9 @@ public class GestionSpectacle {
 					if (sc.hasNextInt()) {
 						int nbPrixFauteuils = sc.nextInt();
 						System.out.println();
-						esT.ajouterSalle(new SalleTheatre(nomSalleTheatre, tarifSalleTheatre, nbPlacesSalleTheatre, nbFauteuils, nbPrixFauteuils));
-						cptSallesTheatre++;
+						if(esT.ajouterSalle(new SalleTheatre(nomSalleTheatre, tarifSalleTheatre, nbPlacesSalleTheatre, nbFauteuils, nbPrixFauteuils)))
+							cptSallesTheatre++;
+						else System.out.println("La salle "+nomSalleTheatre+" existe deja. Merci de saisir d'autres caracteristiques.");
 					} else {
 						System.out.println("Saisir un nombre correct.");
 						sc.next();
