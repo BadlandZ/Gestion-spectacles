@@ -30,6 +30,11 @@ public class EnsembleSalles {
 		return this.parc.get(nom);
 	}
 	
+	public boolean contientSalle(String nom) {
+		Set<String> salles = parc.keySet();
+		return salles.contains(nom);
+	}
+	
 	public String toString() {
 		String s = "---- Ensemble des salles ----";
 		Set<Map.Entry<String, Salle>> lesEntrees= parc.entrySet();

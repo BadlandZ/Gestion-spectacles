@@ -35,7 +35,13 @@ public class ProgrammationFilm {
 		System.out.println("Aucune seance correspondant aux informations saisies");
 		return null;
 	}
-
+	
+	
+	public int nbSeances() {
+		return this.listeSeances.size();
+	}
+	
+	
 	public double tauxRemplissage(int jour, Heure h) {
 		return rechercherSeance(jour, h).tauxRemplissage();
 	}

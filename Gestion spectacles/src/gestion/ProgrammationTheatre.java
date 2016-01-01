@@ -11,6 +11,10 @@ public class ProgrammationTheatre {
 	public ProgrammationTheatre() {
 		this.listeSeances = new TreeSet<SeanceTheatre>();
 	}
+	
+	public int nbSeances() {
+		return this.listeSeances.size();
+	}
 
 	public boolean ajouterSeance(SeanceTheatre sT) {
 		return this.listeSeances.add(sT);

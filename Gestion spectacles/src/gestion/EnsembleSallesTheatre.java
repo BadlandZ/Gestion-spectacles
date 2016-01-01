@@ -26,8 +26,13 @@ public class EnsembleSallesTheatre {
 		return false;
 	}
 	
-	public Salle trouverSalle(String nom) {
+	public SalleTheatre trouverSalle(String nom) {
 		return this.parc.get(nom);
+	}
+	
+	public boolean contientSalle(String nom) {
+		Set<String> salles = parc.keySet();
+		return salles.contains(nom);
 	}
 	
 	public String toString() {

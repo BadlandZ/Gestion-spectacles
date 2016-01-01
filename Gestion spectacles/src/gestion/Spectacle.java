@@ -13,11 +13,7 @@ public abstract class Spectacle {
 	}
 	
 	public String toString() {
-		String str = "Titre: "+titre+"\n Liste des interpretes: \n";
-		for(int i=0; i<interpretes.size(); i++) {
-			str += interpretes.get(i) + "\n";
-		}
-		return str;
+		return "Titre: "+titre+"\n Liste des interpretes: "+interpretes.toString();
 	}
 	
 	public String getTitre() {

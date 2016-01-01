@@ -3,6 +3,7 @@ package gestion;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 //import java.util.Map.Entry;
 import java.util.Set;
 import java.util.HashSet;
@@ -17,6 +18,14 @@ public class ProgrammationSemaine {
 		this.semaine = semaine;
 		this.listeProgFilm = new HashMap<Film, ProgrammationFilm>();
 		this.listeProgTheatre = new HashMap<PieceTheatre, ProgrammationTheatre>();
+	}
+	
+	public Map<Film, ProgrammationFilm> getListeProgFilm() {
+		return listeProgFilm;
+	}
+	
+	public Map<PieceTheatre, ProgrammationTheatre> getListeProgTheatre() {
+		return listeProgTheatre;
 	}
 	
 	public int getSemaine() {
@@ -65,18 +74,23 @@ public class ProgrammationSemaine {
 	 */
 
 	public Film trouverFilm(String titre) {
-		Iterator<Film> it = films();
+		Iterator<Film> it = this.listeProgFilm.keySet().iterator();
 		while (it.hasNext()) {
-			if (it.next().getTitre().equalsIgnoreCase(titre)) {
-				return it.next();
+			Film f = it.next();
+			if (f.getTitre().equalsIgnoreCase(titre)) {
+				return f;
 			}
 		}
 		System.out.println("Le film n'existe pas.");
 		return null;
 	}
 
-	public Set<Film> consulterFilms() {
-		return listeProgFilm.keySet();
+	public String consulterFilms() {
+		String str = "";
+		for(Entry<Film, ProgrammationFilm> entry: listeProgFilm.entrySet()) {
+			str += entry.getKey().getTitre();
+		}
+		return str;
 	}
 
 	public Set<SeanceCinema> consulterSeanceFilm(Film f, int jour) {
@@ -133,8 +147,9 @@ public class ProgrammationSemaine {
 	public PieceTheatre trouverPieceTheatre(String titre) {
 		Iterator<PieceTheatre> it = piecesTheatres();
 		while (it.hasNext()) {
-			if(it.next().getTitre().equalsIgnoreCase(titre)) {
-				return it.next();
+			PieceTheatre p = it.next();
+			if(p.getTitre().equalsIgnoreCase(titre)) {
+				return p;
 			}
 		}
 		System.out.println("La piece de theatre n'existe pas.");
@@ -150,6 +165,14 @@ public class ProgrammationSemaine {
 		}
 		System.out.println("Cette seance n'existe pas.");
 		return null;
+	}
+	
+	public String consulterPieces() {
+		String str = "";
+		for(Entry<PieceTheatre, ProgrammationTheatre> entry : listeProgTheatre.entrySet()) {
+			str += entry.getKey().getTitre();
+		}
+		return str;
 	}
 	
 	public double tauxRemplissagesFilm(Film f, int jour, Heure horaire) {
@@ -176,5 +199,23 @@ public class ProgrammationSemaine {
 			cA += this.listeProgTheatre.get(it.next()).chiffreAffaire();
 		}
 		return cA;
+	}
+	
+	public String toStringFilms() {
+		String str = "";
+		int cpt = 0;
+		for(Entry<Film, ProgrammationFilm> entry : listeProgFilm.entrySet()) {
+			str += cpt+" - "+entry.getKey() + "\n";
+			cpt++;
+		}
+		return str;
+	}
+	
+	public String toStringPieces() {
+		String str = "";
+		for(Entry<PieceTheatre, ProgrammationTheatre> entry: listeProgTheatre.entrySet()) {
+			str += " - "+entry.getKey() + "\n";
+		}
+		return str;
 	}
 }
