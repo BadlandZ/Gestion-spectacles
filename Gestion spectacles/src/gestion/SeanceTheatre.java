@@ -21,6 +21,7 @@ public class SeanceTheatre extends Seance {
 		if (this.salleTheatre.getNbFauteuils() == this.nbFauteuilsVendus)
 			throw new IllegalArgumentException("Capacite atteinte");
 		this.nbFauteuilsVendus += nbre;
+		
 	}
 
 	public int nbPlacesDispo() {

@@ -156,11 +156,11 @@ public class ProgrammationSemaine {
 		return null;
 	}
 	
-	public SeanceTheatre consulterSeanceParInfos(PieceTheatre pT, int jour) {
+	public SeanceTheatre consulterSeanceParInfos(PieceTheatre pT, int jour, Heure horaire) {
 		Iterator<SeanceTheatre> itSeanceTheatre = listeProgTheatre.get(pT).getIterator();
 		while(itSeanceTheatre.hasNext()) {
 			SeanceTheatre suivant = itSeanceTheatre.next();
-			if(suivant.getJour() == jour)
+			if(suivant.getJour() == jour && suivant.getHoraire().equals(horaire))
 				return suivant;
 		}
 		System.out.println("Cette seance n'existe pas.");
@@ -188,8 +188,8 @@ public class ProgrammationSemaine {
 		return cA;
 	}
 	
-	public double tauxRemplissageTheatre(PieceTheatre pT, int jour) {
-		return this.listeProgTheatre.get(pT).tauxRemplissage(jour);
+	public double tauxRemplissageTheatre(PieceTheatre pT, int jour, Heure horaire) {
+		return this.listeProgTheatre.get(pT).tauxRemplissage(jour, horaire);
 	}
 	
 	public double chiffreAffairePiecesTheatres(PieceTheatre pT) {

@@ -28,10 +28,11 @@ public class ProgrammationTheatre {
 		return this.listeSeances.iterator();
 	}
 
-	public SeanceTheatre rechercherSeance(int jour) {
+	public SeanceTheatre rechercherSeance(int jour, Heure horaire) {
 		Iterator<SeanceTheatre> it = listeSeances.iterator();
 		while (it.hasNext()) {
-			if ((it.next().getJour() == jour)) {
+			SeanceTheatre sT = it.next();
+			if ((sT.getJour() == jour) && (sT.getHoraire().equals(horaire))) {
 				return it.next();
 			}
 		}
@@ -39,8 +40,8 @@ public class ProgrammationTheatre {
 		return null;
 	}
 
-	public double tauxRemplissage(int jour) {
-		return rechercherSeance(jour).tauxRemplissage();
+	public double tauxRemplissage(int jour, Heure horaire) {
+		return rechercherSeance(jour, horaire).tauxRemplissage();
 	}
 
 	public double chiffreAffaire() {

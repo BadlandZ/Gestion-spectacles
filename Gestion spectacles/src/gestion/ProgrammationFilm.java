@@ -27,9 +27,9 @@ public class ProgrammationFilm {
 	public SeanceCinema rechercherSeance(int jour, Heure h) {
 		Iterator<SeanceCinema> it = listeSeances.iterator();
 		while (it.hasNext()) {
-			if ((it.next().getJour() == jour)
-					&& (it.next().getHoraire().equals(h))) {
-				return it.next();
+			SeanceCinema sC = it.next();
+			if ((sC.getJour() == jour) && (sC.getHoraire().equals(h))) {
+				return sC;
 			}
 		}
 		System.out.println("Aucune seance correspondant aux informations saisies");
@@ -50,7 +50,8 @@ public class ProgrammationFilm {
 		Iterator<SeanceCinema> it = getIterator();
 		double chiffreAffaire = 0;
 		while (it.hasNext()) {
-			chiffreAffaire += it.next().totalVendu() * it.next().getSalle().getTarif();
+			SeanceCinema sC = it.next();
+			chiffreAffaire += sC.totalVendu() * sC.getSalle().getTarif();
 		}
 		return chiffreAffaire;
 	}

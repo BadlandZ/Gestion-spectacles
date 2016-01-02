@@ -218,9 +218,10 @@ public class GestionSpectacle {
 			}
 			else if (choix.equalsIgnoreCase("2")) {
 /*Modification*/System.out.println("-----|Modifier une programmation existente|-----");
-				System.out.println("--- Programmations --- ");
+				System.out.println("\n- Programmations -\n ");
 				Iterator<ProgrammationSemaine> it = lesProgrammations.iterator();
 				cpt = 0;
+				System.out.println();
 				while(it.hasNext()) {
 					ProgrammationSemaine pS = it.next();
 					if(pS.getListeProgFilm().keySet().size() > 0) {
@@ -309,7 +310,7 @@ public class GestionSpectacle {
 									System.out.println("Saisir un chiffre correct.");
 									sc.next();
 								}
-							}
+							} else System.out.println("Saisir un caractere correct.");
 						}
 						else if(choix2.equalsIgnoreCase("s")) {
 							System.out.println("--- Supression d'une seance ---");
@@ -393,6 +394,7 @@ public class GestionSpectacle {
 							}
 							else System.out.println("Saisir une reponse correct.");
 						}
+						else System.out.println("Saisir un caractere correct.");
 					} else {
 						System.out.println("Saisir un nombre entre 0 et"+lesProgrammations.size());
 					}
@@ -400,6 +402,189 @@ public class GestionSpectacle {
 					System.out.println("Saisir un nombre correct.");
 					sc.next();
 				}
+			}
+			else if (choix.equalsIgnoreCase("3")) {
+				System.out.println("----|Vendre des places pour une programmation|----");
+				System.out.println("\n- Programmations -\n");
+				Iterator<ProgrammationSemaine> it = lesProgrammations.iterator();
+				cpt = 0;
+				System.out.println();
+				while(it.hasNext()) {
+					ProgrammationSemaine pS = it.next();
+					if(pS.getListeProgFilm().keySet().size() > 0) {
+						System.out.println(cpt+" - "+pS.consulterFilms());
+						cpt ++;
+					}
+					if(pS.getListeProgTheatre().keySet().size() > 0) {
+						System.out.println(cpt+" - "+pS.consulterPieces());
+						cpt ++;
+					}
+				}
+				System.out.print("Vente de places pour un film ou une piece ? (Film/Piece): ");
+				String choix3 = sc1.nextLine();
+				if(choix3.equalsIgnoreCase("film")) {
+					System.out.print("Semaine (se referer a la liste de programmation ci-dessus): ");
+					if(sc.hasNextInt()) {
+						int semaine = sc.nextInt();
+						System.out.print("Titre du film: ");
+						String film = sc1.nextLine();
+						System.out.println(lesProgrammations.get(semaine).consulterSeanceCinema(lesProgrammations.get(semaine).trouverFilm(film)).toString());
+						System.out.print("Jour: ");
+						if(sc.hasNextInt()) {
+							int jour = sc.nextInt();
+							System.out.print("Horaire. Heure: ");
+							if(sc.hasNextInt()) {
+								int heure = sc.nextInt();
+								System.out.print("Horaire. Minute: ");
+								if(sc.hasNextInt()) {
+									int minute = sc.nextInt();
+									System.out.println("Nombre de place disponibles: "+lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverFilm(film), jour, new Heure(heure, minute)).nbPlacesDispo());
+									System.out.print("Saisir le nombre de places a vendre: ");
+									if(sc.hasNextInt()) {
+										int nbPlaces = sc.nextInt();
+										lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverFilm(film), jour, new Heure(heure, minute)).vendrePlacesTR(nbPlaces);
+										System.out.println("Il reste maintenant: "+lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverFilm(film), jour, new Heure(heure, minute)).nbPlacesDispo()+" places disponibles.");
+									} else {
+										System.out.println("Saisir un nombre correct.");
+										sc.next();
+									}
+								} else {
+									System.out.println("Saisir une minute correct.");
+									sc.next();
+								}
+							} else {
+								System.out.println("Saisir une heure correct.");
+								sc.next();
+							}
+						} else {
+							System.out.println("Saisir un jour correct.");
+							sc.next();
+						}
+					} else {
+						System.out.println("Saisir un chiffre correct.");
+						sc.next();
+					}
+				}
+				else if (choix3.equalsIgnoreCase("piece")) {
+					System.out.print("Semaine (se referer a la liste de programmation ci-dessus): ");
+					if(sc.hasNextInt()) {
+						int semaine = sc.nextInt();
+						System.out.print("Titre de la piece: ");
+						String piece = sc1.nextLine();
+						System.out.println(lesProgrammations.get(semaine).consulterSeanceTheatre(lesProgrammations.get(semaine).trouverPieceTheatre(piece)).toString());
+						System.out.print("Jour: ");
+						if(sc.hasNextInt()) {
+							int jour = sc.nextInt();
+							System.out.print("Horaire. Heure: ");
+							if(sc.hasNextInt()) {
+								int heure = sc.nextInt();
+								System.out.print("Horaire. Minute: ");
+								if(sc.hasNextInt()) {
+									int minute = sc.nextInt();
+									System.out.println("Nombre de fauteuils disponibles: "+lesProgrammations
+											.get(semaine).consulterSeanceParInfos(lesProgrammations
+													.get(semaine).trouverPieceTheatre(piece), jour, new Heure(heure, minute)).nbFauteuilsDispo());
+									System.out.print("Saisir le nombre de places de fauteuils a vendre: ");
+									if(sc.hasNextInt()) {
+										int nbPlacesFauteuils = sc.nextInt();
+										lesProgrammations
+											.get(semaine)
+											.consulterSeanceParInfos(lesProgrammations.get(semaine)
+													.trouverPieceTheatre(piece), jour, new Heure(heure, minute)).vendrePlacesFauteuil(nbPlacesFauteuils);
+										System.out.println("Il reste maintenant: "+lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverPieceTheatre(piece), jour, new Heure(heure, minute)).nbFauteuilsDispo()+" fauteuils disponibles.");
+										System.out.println("Il reste: "+lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverPieceTheatre(piece), jour, new Heure(heure, minute)).nbPlacesDispo()+" disponibles.");
+										System.out.println("Saisir le nombre de places a vendre: ");
+										int nbPlaces = sc.nextInt();
+										lesProgrammations
+										.get(semaine)
+										.consulterSeanceParInfos(lesProgrammations.get(semaine)
+												.trouverPieceTheatre(piece), jour, new Heure(heure, minute)).vendrePlacesTN(nbPlaces);
+										System.out.println("Il reste maintenant: "+lesProgrammations.get(semaine).consulterSeanceParInfos(lesProgrammations.get(semaine).trouverPieceTheatre(piece), jour, new Heure(heure, minute)).nbPlacesDispo()+" places disponibles.");
+									} else {
+										System.out.println("Saisir un nombre correct.");
+										sc.next();
+									}
+								} else {
+									System.out.println("Saisir une minute correct.");
+									sc.next();
+								}
+							} else {
+								System.out.println("Saisir une heure correct.");
+								sc.next();
+							}
+						} else {
+							System.out.println("Saisir un jour correct.");
+							sc.next();
+						}
+					} else {
+						System.out.println("Saisir un chiffre correct.");
+						sc.next();
+					}
+				}
+				else System.out.println("Saisir un choix correct.");
+			}
+			else if (choix.equalsIgnoreCase("4")) {
+				System.out.println("----|Consulter les informations relatives aux ventes|----");
+				System.out.println("\n- Programmations -\n");
+				Iterator<ProgrammationSemaine> it = lesProgrammations.iterator();
+				cpt = 0;
+				System.out.println();
+				while(it.hasNext()) {
+					ProgrammationSemaine pS = it.next();
+					if(pS.getListeProgFilm().keySet().size() > 0) {
+						System.out.println(cpt+" - "+pS.consulterFilms());
+						cpt ++;
+					}
+					if(pS.getListeProgTheatre().keySet().size() > 0) {
+						System.out.println(cpt+" - "+pS.consulterPieces());
+						cpt ++;
+					}
+				}
+				System.out.print("\nSemaine (se referer a la liste de programmation ci-dessus): ");
+				int semaine = sc.nextInt();
+				System.out.print("Souhaitez vous consulter les informations d'un film ou d'une piece de theatre ? (Film/Piece): ");
+				String choix3 = sc1.nextLine();
+				if(choix3.equalsIgnoreCase("Film")) {
+					System.out.print("Film: ");
+					String film = sc1.nextLine();
+					System.out.println("Seances: ");
+					System.out.println(lesProgrammations.get(semaine).consulterSeanceCinema(lesProgrammations.get(semaine).trouverFilm(film)).toString());
+					System.out.print("Jour: ");
+					int jour = sc.nextInt();
+					System.out.print("Horaire. Heure: ");
+					int heure = sc.nextInt();
+					System.out.print("Horaire. Minute: ");
+					int minute = sc.nextInt();
+					System.out.print("Consulter le chiffre d'affaire ou le taux de remplissage ? (chiffre/taux): ");
+					choix3 = sc1.nextLine();
+					if(choix3.equalsIgnoreCase("chiffre")) {
+						System.out.println("Chiffre d'affaire: "+lesProgrammations.get(semaine).chiffreAffaireFilms(lesProgrammations.get(semaine).trouverFilm(film))+"€.");
+					}
+					else if(choix3.equalsIgnoreCase("taux")) {
+						System.out.println("Taux de remplissage: "+lesProgrammations.get(semaine).tauxRemplissagesFilm(lesProgrammations.get(semaine).trouverFilm(film), jour, new Heure(heure, minute))+"%.");
+					} else System.out.println("Saisir un choix correct. ");
+				}
+				else if(choix3.equalsIgnoreCase("Piece")) {
+					System.out.print("Piece: ");
+					String piece = sc1.nextLine();
+					System.out.println("Seances: ");
+					System.out.println(lesProgrammations.get(semaine).consulterSeanceTheatre(lesProgrammations.get(semaine).trouverPieceTheatre(piece)).toString());
+					System.out.print("Jour: ");
+					int jour = sc.nextInt();
+					System.out.print("Horaire. Heure: ");
+					int heure = sc.nextInt();
+					System.out.print("Horaire. Minute: ");
+					int minute = sc.nextInt();
+					System.out.print("Consulter le chiffre d'affaire ou le taux de remplissage ? (chiffre/taux): ");
+					choix3 = sc1.nextLine();
+					if(choix3.equalsIgnoreCase("chiffre")) {
+						System.out.println("Chiffre d'affaire: "+lesProgrammations.get(semaine).chiffreAffairePiecesTheatres(lesProgrammations.get(semaine).trouverPieceTheatre(piece))+"€.");
+					}
+					else if(choix3.equalsIgnoreCase("taux")) {
+						System.out.println("Taux de remplissage: "+lesProgrammations.get(semaine).tauxRemplissageTheatre(lesProgrammations.get(semaine).trouverPieceTheatre(piece), jour, new Heure(heure, minute))+"%.");
+					} else System.out.println("Saisir un choix correct. ");
+				} else System.out.println("Saisir un choix correct.");
+				
 			}
 		}
 
