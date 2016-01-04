@@ -1,5 +1,13 @@
 package gestion;
 
+/**
+ * La classe Salle permet de creer les salles de spectacles.
+ * Elles sont caracterises par un nom, une capacite un tarif et un nombre de places
+ * 
+ * @author younes
+ * @version 1.0
+ */
+
 import java.util.Objects;
 
 public class Salle {

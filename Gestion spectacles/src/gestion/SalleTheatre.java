@@ -1,4 +1,11 @@
 package gestion;
+/**
+ * La classe SalleTheatre herite de la classe Salle et permet de creer des salles de theatre.
+ * Elle est caracterisee par un nombre de fauteuils et un prix du fauteuil
+ * 
+ * @author younes
+ * @version 1.0
+ */
 
 public class SalleTheatre extends Salle {
 

@@ -1,5 +1,14 @@
 package gestion;
 
+/**
+ * La classe Seance permet la creation de seances caracterises par un jour, un horaire et un nombre de places vendues.
+ * De plus elle implemente l'interface Comparable<Seance> afin d'ajouter la methode compareTo qui compare deux seances
+ * en fonction du jour et de l'horaire
+ * 
+ * @author younes
+ * @version 1.0
+ */
+
 public abstract class Seance implements Comparable<Seance> {
 
 	private int jour;

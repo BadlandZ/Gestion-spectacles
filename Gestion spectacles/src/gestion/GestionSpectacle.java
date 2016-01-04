@@ -1,21 +1,47 @@
 package gestion;
 
+/**
+ * GestionSpectacle est la classe centralisant l'ensemble des classes. Elle contient notament les methode main. 
+ * Elle est est caracterise par une list lesProgrammations contenant l'ensemble des ProgrammationSemaine crees par l'utilisateur.
+ * Elle permet notamment la creation des Salles et Salles de theatre par le biai d'un menu qui se veut le plus interactif possible.
+ * 
+ * @author younes
+ * version 1.0
+ */
+
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
 public class GestionSpectacle {
-
+	/**
+	 * Premier scanner permetant la lecture des entiers
+	 */
 	static Scanner sc = new Scanner(System.in);
+	/**
+	 * Second scanner permetant la lecture des chaines de caractere
+	 */
 	static Scanner sc1 = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		/**
+		 * Compteur permettant l'affichage des differentes Salle/SalleTheatre en cours de preparation pour un affichage plus clair
+		 */
 		int cpt = 1;
-
+		
+		/**
+		 * List de type ArrayList<ProgrammationSemaine> contenant l'ensemble des programmations semaines crees par l'utilisateur
+		 */
 		List<ProgrammationSemaine> lesProgrammations = new ArrayList<ProgrammationSemaine>();
-
+		
+		/**
+		 * Objet de type EnsembleSalles qui contient l'ensemble des Salle crees par l'utilisateur
+		 */
 		EnsembleSalles eS = new EnsembleSalles();
+		/**
+		 * Objet de type EnsembleSallesTheatre qui contient l'ensembe des SalleTheatre crees par l'utilisateur
+		 */
 		EnsembleSallesTheatre esT = new EnsembleSallesTheatre();
 //Creation  des salles
 		System.out.println("Bienvenu dans le logiciel de gestion de la billetterie de la maison des Arts et de la Culture de la ville de Tarascon.");
@@ -585,6 +611,13 @@ public class GestionSpectacle {
 					} else System.out.println("Saisir un choix correct. ");
 				} else System.out.println("Saisir un choix correct.");
 				
+			}
+			else if(choix.equalsIgnoreCase("q")) {
+				System.out.println("Arret du logiciel.");
+				return;
+			}
+			else {
+				System.out.println("Saisir une reponse correct.");
 			}
 		}
 

@@ -1,5 +1,13 @@
 package gestion;
 
+/**
+ * La classe SeanceTheatre permet la creation de Seance de Theatre. Elle hérite de la classe Seance et est caracterise par une SalleTheatre 
+ * et un nombre de fauteuils vendus.
+ * 
+ * @author younes
+ * @verion 1.0
+ */
+
 public class SeanceTheatre extends Seance {
 
 	private SalleTheatre salleTheatre;

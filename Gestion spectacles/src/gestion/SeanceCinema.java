@@ -1,5 +1,14 @@
 package gestion;
 
+/**
+ * La classe SeanceCinema permet la creation de Seance de Cinema et hérite de la classe Seance. Elle est caracterise par
+ * une salle et un nombre de places vendues a tarif reduit.
+ * 
+ * @author younes
+ * @version 1.0
+ *
+ */
+
 public class SeanceCinema extends Seance {
 
 	private Salle salle;
